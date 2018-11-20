@@ -1,0 +1,132 @@
+% New version of the IMISE beamer theme, does not require Futura anymore.
+% Replaced the old one theme in November 2018.
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+\setbeamertemplate{headline}{}
+\usepackage[export]{adjustbox}
+\usepackage{xcolor}
+
+\mode<presentation>
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\setbeamertemplate{navigation symbols}{}
+
+%\definecolor{imiseblue}{HTML}{005FB9}
+\definecolor{mediblue}{RGB}{0,138,201}
+\definecolor{mixblue}{RGB}{0,167,214}
+\definecolor{aquamarin}{RGB}{138,194,209}
+\definecolor{lowertriangle}{RGB}{9,65,81}
+%\setbeamercolor{footer}{fg=white, bg=imiseblue}
+\setbeamercolor{title}{fg=black, bg=white}
+
+\setbeamertemplate{itemize item}{\color{red}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{red}$\blacktriangleright$}
+\setbeamertemplate{section in toc}{\color{red}\inserttocsection}
+\setbeamercolor{local structure}{fg=red}
+
+%\setbeamerfont*{title}{family={\fontfamily{phv}},series=\bfseries,size=\LARGE}
+\setbeamerfont*{title}{family=\sffamily,series=\bfseries,size=\LARGE}
+\setbeamerfont*{subtitle}{series=\mdseries}% subtitle inherits from title, https://tex.stackexchange.com/questions/270188/beamer-separate-page-title-subtitle-author-date-fonts
+
+\let\origframetitle=\frametitle
+\renewcommand\frametitle[1]{\origframetitle
+{
+\setbeamertemplate{frametitle}[default][left] 
+#1
+}
+}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+\setbeamertemplate{footline}{}
+
+\begin{tikzpicture}[remember picture,overlay]  
+    \node [anchor=north west, inner sep=0pt] at (current page.north west) % for unknown reasons, the x and y shift is necessary for perfect alignment
+     {\includegraphics[width=0.4\textwidth]{img/medfak.pdf}};
+  \end{tikzpicture}
+ ~\\
+ \vspace{0.25\textheight}
+  {\usebeamerfont{subtitle}\insertsubtitle\par}
+ \vspace{0.05\textheight}
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+~\\
+\usebeamerfont{date}\insertdate\par
+ \vspace{0.02\textheight}
+\usebeamerfont{author}\insertauthor\par
+ \vspace{0.05\textheight}
+\resizebox{0.2\textwidth}{!}% huger than huge
+{\Huge\bfseries \color{mixblue} imise \hspace{-0.3em}\tiny\color{orange}~{$\blacksquare$}}\\
+% upper triangle
+\begin{tikzpicture}[overlay]
+\coordinate (s0) at (\paperwidth,0);
+\coordinate (s1) at (\paperwidth,1.315\paperheight);% for unknown reasons, paperheight isn't enough
+\coordinate (s2) at (0.9\paperwidth,0);
+\filldraw[draw=mediblue, fill=mediblue] (s0) -- (s1) -- (s2) -- (s0);
+\end{tikzpicture}
+% lower triangle
+\begin{tikzpicture}[overlay]
+\coordinate (s0) at (\paperwidth,0);
+\coordinate (s1) at (\paperwidth,0.35\textheight);
+\coordinate (s2) at (0.65\paperwidth,0);
+\filldraw[draw=lowertriangle, fill=lowertriangle,opacity=0.5] (s0) -- (s1) -- (s2) -- (s0);
+\end{tikzpicture}
+}
+
+\makeatother
+\setbeamertemplate{footline}
+{
+ \vspace{1.5em} % put footnotes higher, unfortunately also 
+ \ifnum\insertframenumber>1%
+\vspace{-5em} %ifnum somehow moves it too far below, workaround
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.9ex,dp=1ex,colsep=0pt,left]{footer}%colsep and extra width to hopefully prevent white vertical lines in between color boxes
+{\normalsize imise \hspace{-0.3em}\huge\color{orange}.}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.9ex,dp=1ex,colsep=0pt,center]{footer}%
+    \usebeamerfont{title in head/foot}\insertshorttitle---\insertshortauthor---\insertshortdate
+    Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.9ex,dp=1ex,colsep=0pt,right]{footer}%
+    \usebeamerfont{title in head/foot}\insertframenumber{} %/ \inserttotalframenumber
+    \hspace*{1ex}
+  \end{beamercolorbox}
+}%
+\fi%
+}
+\makeatletter
+
+\mode<all>
+
+\AtEndDocument{
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]{}{}
+\large
+{\Huge\bfseries VIELEN DANK!\\}
+\vspace{0.1\textheight}
+\textbf{\insertauthor{}}\\
+Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)\\
+~\\
+TODO: Address\\
+TODO: Telephone number\\
+~\\
+TODO: EMail Adress\\
+\url{www.imise.uni-leipzig.de}
+
+% upper triangle
+\begin{tikzpicture}[overlay, remember picture]
+\coordinate (s0) at (\paperwidth,0);
+\coordinate (s1) at (\paperwidth,1.315\paperheight);% for unknown reasons, paperheight isn't enough
+\coordinate (s2) at (0.9\paperwidth,0);
+\filldraw[draw=mediblue, fill=mediblue] (s0) -- (s1) -- (s2) -- (s0);
+\end{tikzpicture}
+% lower triangle
+\begin{tikzpicture}[overlay, remember picture]
+\coordinate (s0) at (\paperwidth,0);
+\coordinate (s1) at (\paperwidth,0.35\textheight);
+\coordinate (s2) at (0.65\paperwidth,0);
+\filldraw[draw=lowertriangle, fill=lowertriangle,opacity=0.5] (s0) -- (s1) -- (s2) -- (s0);
+\end{tikzpicture}
+\end{frame}
+}
