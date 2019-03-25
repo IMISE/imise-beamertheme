@@ -67,10 +67,18 @@
 
 \newcommand{\medfak}{
 \begin{tikzpicture}[overlay, remember picture]  
- \node [anchor=north west, inner sep=0pt] at (current page.north west)
+ \node [anchor=north west, inner sep=1pt,xshift=1.8em] at (current page.north west)
   {\includegraphics[width=0.45\textwidth]{img/medfak.pdf}};
 \end{tikzpicture}
 }
+
+\newcommand{\imise}{
+\begin{tikzpicture}[overlay, remember picture]  
+ \node [anchor=south west, inner sep=1pt,xshift=2.3em] at (current page.south west)
+  {\includegraphics[width=0.3\textwidth]{img/imise-logo.pdf}};
+\end{tikzpicture}
+}
+
 
 \defbeamertemplate*{title page}{customized}[1][]
 {
@@ -84,9 +92,8 @@
  \vspace{0.02\textheight}
 \usebeamerfont{author}\insertauthor\par
  \vspace{0.05\textheight}
-\resizebox{0.2\textwidth}{!}% huger than huge
-{\Huge\bfseries \color{mixblue} imise \hspace{-0.3em}\tiny\color{orange}~{$\blacksquare$}}\\
 \medfak{}
+\imise{}
 \triangles{}
 }
 
