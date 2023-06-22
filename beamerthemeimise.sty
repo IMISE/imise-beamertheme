@@ -1,8 +1,27 @@
-% New version of the IMISE beamer theme, does not require Futura anymore.
-% This template could still be modified to use Futura but is not done at this moment due to all the problems this caused. 
-% Replaced the old one theme in November 2018.
-%\usetheme{CambridgeUS}
+% IMISE Beamer Theme v3 2023-06-22
 \usecolortheme{dolphin}
+
+\usepackage{iftex}
+\ifpdftex
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\else
+\usepackage{fontspec}
+\newfontfamily\jost{Jost}[
+  Path = ./font/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+  NFSSFamily=jostttf
+]
+\AtBeginDocument{\addfontfeatures{RawFeature=+ss01}} % Futura-like 'a'
+\renewcommand{\rmdefault}{jostttf}
+\renewcommand{\sfdefault}{jostttf}
+\fi
+
 \setbeamertemplate{headline}{}
 \usepackage[export]{adjustbox}
 \usepackage{xcolor}
@@ -10,7 +29,6 @@
 \mode<presentation>
 \usepackage{amssymb}
 \usepackage{tikz}
-
 \newlength\leftsidebar
 \newlength\rightsidebar
 \makeatletter
@@ -58,7 +76,7 @@
 \end{tikzpicture}
 % lower triangle
 \begin{tikzpicture}[overlay, remember picture]
-\tikzset{shift={(current page.south east),yshift=0.1cm}}
+\tikzset{shift={(current page.south east)}}
 \coordinate (s0) at (0,0);
 \coordinate (s1) at (0,0.35\textheight);
 \coordinate (s2) at (-0.35\paperwidth,0);
@@ -149,7 +167,5 @@ T \telephone{}\\
 \url{\email}\\
 \url{www.imise.uni-leipzig.de}
 
-
 \end{frame}
 }
-
