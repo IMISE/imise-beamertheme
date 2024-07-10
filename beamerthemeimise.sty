@@ -1,4 +1,4 @@
-% IMISE Beamer Theme v3 2023-06-22
+% IMISE Beamer Theme v3 2024-07-10
 \usecolortheme{dolphin}
 
 \usepackage{iftex}
@@ -54,14 +54,6 @@
 %\setbeamerfont*{title}{family={\fontfamily{phv}},series=\bfseries,size=\LARGE}
 \setbeamerfont*{title}{family=\sffamily,series=\bfseries,size=\LARGE}
 \setbeamerfont*{subtitle}{series=\mdseries}% subtitle inherits from title, https://tex.stackexchange.com/questions/270188/beamer-separate-page-title-subtitle-author-date-fonts
-
-\let\origframetitle=\frametitle
-\renewcommand\frametitle[1]{\origframetitle
-{
-\setbeamertemplate{frametitle}[default][left] 
-#1
-}
-}
 
 \renewcommand\footnoterule{} % we have our own line in all the slides
 
