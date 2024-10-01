@@ -9,7 +9,7 @@
 \else
 \usepackage{fontspec}
 \newfontfamily\jost{Jost}[
-  Path = ./font/,
+  Path = ./imise-font/,
   Extension = .ttf,
   UprightFont = *-Regular,
   BoldFont = *-Bold,
@@ -79,14 +79,14 @@
 \newcommand{\medfak}{
 \begin{tikzpicture}[overlay, remember picture]  
  \node [anchor=north west, inner sep=1pt,xshift=1.8em] at (current page.north west)
-  {\includegraphics[width=0.45\textwidth]{img/medfak.pdf}};
+  {\includegraphics[width=0.45\textwidth]{imise-img/medfak.pdf}};
 \end{tikzpicture}
 }
 
 \newcommand{\imise}{
 \begin{tikzpicture}[overlay, remember picture]  
  \node [anchor=south west, inner sep=1pt,xshift=2.3em] at (current page.south west)
-  {\includegraphics[width=0.3\textwidth]{img/imise-logo.pdf}};
+  {\includegraphics[width=0.3\textwidth]{imise-img/imise-logo.pdf}};
 \end{tikzpicture}
 }
 
@@ -131,7 +131,7 @@
 }
 \begin{tikzpicture}[overlay, remember picture]  
  \node [anchor=south west, inner sep=0pt,xshift=0.05\textwidth,yshift=0.01\textheight] at (current page.south west)
-  {\includegraphics[width=0.08\textwidth]{img/unileipzig-text.pdf}};
+  {\includegraphics[width=0.08\textwidth]{imise-img/unileipzig-text.pdf}};
 \end{tikzpicture}
 %
 \fi%
